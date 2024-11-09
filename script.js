@@ -1,3 +1,6 @@
+// <!-- 105222036_ShevaHayaMilano
+// 105222003_Fauzan Azhima -->
+
 // menu hamburger
 const navbarNav = document.querySelector('.navbar-nav');
 document.querySelector('#hamburger-menu').onclick = () => {
