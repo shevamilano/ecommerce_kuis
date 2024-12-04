@@ -29,8 +29,34 @@
 <body>
 
   <nav class="navbar">
-    <a href="#" class="navbar-logo">Glow</span>.Up</a>
+  <?php
+  $host = 'localhost';
+  $username = 'root';
+  $password = '';
+  $database = 'test';
 
+  $error = '';
+  $isError = false;
+
+  $conn = new mysqli($host, $username, $password, $database);
+  if ($conn->connect_error) {
+    die("Koneksi gagal: " . $conn->connect_error);
+  } 
+
+  if(isset($_POST['nama']) && $_POST['nama'] !== '') {
+    if(isset($_POST['email']) && $_POST['email'] !== '') {
+      $error = '';
+      $isError = false;
+    } else {
+      $error = 'Email belum diisi';
+      $isError = true;
+    }
+  } else {
+    $error = 'Nama belum diisi';
+    $isError = true;
+  }
+?>
+    <a href="#" class="navbar-logo">Glow</span>.Up</a>
     <div class="navbar-nav">
       <a href="#home">Home</a>
       <a href="#products">Produk</a>
@@ -49,6 +75,23 @@
         <button id="purchase-button" class="btn">Beli Sekarang</button>
       </div>
     </div>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <?php if($isError): ?>
+    <p><?= $error ?></p> 
+  <?php endif; ?>
+  <?php if($_POST['nama']): ?>
+    <h1><?= $_POST['nama'] ?></h1>
+  <?php endif ?>
+</body>
+</html>
   </nav>
 
   <section class="hero" id="home">
@@ -361,8 +404,6 @@
 
   <section id="contact" class="contact">
     <h2><span>Contact Us</span></h2>
-    </p>
-
     <div class="row">
       <form action="">
         <div class="input-group">
@@ -379,7 +420,6 @@
         </div>
         <button type="submit" class="btn">kirim pesan</button>
       </form>
-
     </div>
   </section>
 
