@@ -90,6 +90,9 @@
   <?php if($_POST['nama']): ?>
     <h1><?= $_POST['nama'] ?></h1>
   <?php endif ?>
+  <?php if($_POST['email']): ?>
+    <h1><?= $_POST['email'] ?></h1>
+  <?php endif ?>
 </body>
 </html>
   </nav>
